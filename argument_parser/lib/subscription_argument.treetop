@@ -1,0 +1,20 @@
+grammar SubscriptionArgument
+	rule parenthesized_args
+    '{' args '}'   
+  end
+	
+	rule args
+		first_arg:escaped_arg rest_args:(', ' arg:escaped_arg)* {
+    def args
+      [first_arg] + rest_args.elements.map do |comma_and_arg|
+      	comma_and_arg.arg
+      end
+    end
+  }
+	end
+
+	rule escaped_arg
+		( '|,' / '|{' / '|}' / !',' !'{' !'}' . )*
+	end
+
+end
