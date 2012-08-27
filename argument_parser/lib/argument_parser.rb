@@ -32,7 +32,7 @@ class ArgumentParser
       unescaped_arg = arg
       replacements = [ ["|,", ","], ["|{", "{"], ["|}", "}"] ]
       replacements.each do |replacement| 
-	      unescaped_arg.gsub!(replacement[0], replacement[1])
+        unescaped_arg.gsub!(replacement[0], replacement[1])
       end
       unescaped_arg
     end	
